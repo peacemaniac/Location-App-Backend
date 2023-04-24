@@ -1,0 +1,20 @@
+version: "3.3"
+services:
+  locations-app-db:
+    container_name: locations-app-mysql-db
+    image: mysql:5.7
+    restart: always
+    command: --sql_mode="NO_ENGINE_SUBSTITUTION"
+    environment:
+      MYSQL_DATABASE: "locations_app_db"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "password"
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    volumes:
+      - vol-locations-app-db:/var/lib/mysql
+volumes:
+  vol-locations-app-db:
